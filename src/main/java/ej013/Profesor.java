@@ -12,9 +12,12 @@ package ej013;
 public class Profesor extends Persona{
     private String especialidad;
 
-    public Profesor(String nombre, String apellidos, String NIF, Direccion direccion) {
+    public Profesor(String especialidad, String nombre, String apellidos, String NIF, Direccion direccion) {
         super(nombre, apellidos, NIF, direccion);
+        this.especialidad = especialidad;
     }
+
+   
 
    
 
