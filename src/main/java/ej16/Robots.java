@@ -12,43 +12,57 @@ import java.util.Random;
  *
  * @author alber
  */
-public class Robots {
+public class Robots implements Comparable<Robots>{
 
-    private Formatter numeroSerie;
-    private int vida;
+    private Integer numeroSerie;
+    private Integer vida;
 
     public Robots() {
         this.numeroSerie = crearSerie();
         this.vida = crearVida();
     }
 
-    public Formatter getNumeroSerie() {
+    public Integer getNumeroSerie() {
         return numeroSerie;
     }
 
-    public void setNumeroSerie(Formatter numeroSerie) {
-        this.numeroSerie = numeroSerie;
+    public void setNumeroSerie(Integer numeroSerie) {
+        this.numeroSerie = crearSerie();
     }
 
-    public int getVida() {
+    public Integer getVida() {
         return vida;
     }
 
-    public void setVida(int vida) {
-        this.vida = vida;
+    public void setVida(Integer vida) {
+        this.vida = crearVida();
     }
 
-    private int crearVida() {
+    @Override
+    public String toString() {
+        return "Robots{" + "numeroSerie=" + numeroSerie + ", vida=" + vida + '}';
+    }
+    
+    
+
+    private Integer crearVida() {
         Random random = new Random();
+        
         int enteroAleatorio = random.nextInt(100 - 1 + 1) + 1;
-        return enteroAleatorio;
+        Integer iInteger = Integer.valueOf(enteroAleatorio);
+        return iInteger;
     }
 
-    private Formatter crearSerie() {
+    private Integer crearSerie() {
         Random random = new Random();
-        Formatter fmt = new Formatter();
+       
         int enteroAleatorio = random.nextInt(9999 - 100 + 1) + 100;
-        fmt.format("%08d", enteroAleatorio);
-        return fmt;
+        Integer iInteger = Integer.valueOf(enteroAleatorio);
+        return iInteger;
+    }
+
+    @Override
+    public int compareTo(Robots t) {
+         return this.getVida().compareTo(t.getVida());
     }
 }
